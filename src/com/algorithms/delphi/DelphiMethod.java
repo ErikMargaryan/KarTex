@@ -1,4 +1,4 @@
-package com.graph;
+package com.algorithms.delphi;
 
 import java.util.Arrays;
 import java.util.Scanner;
