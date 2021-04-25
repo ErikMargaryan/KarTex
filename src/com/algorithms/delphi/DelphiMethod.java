@@ -76,7 +76,7 @@ public class DelphiMethod {
             midValue += rates;
         }
         midValue /= K;
-        System.out.println("Կարգերի միջինացված արժեքը` " + midValue);
+        System.out.println("\nԿարգերի միջինացված արժեքը` " + midValue);
     }
 
     //Կարգերի շեղում + շեղումների քառակուսիների գումար
@@ -86,7 +86,7 @@ public class DelphiMethod {
             System.out.println(i + 1 + "-ին օբյեկտի համար յուրաքանչյուր կարգի շեղումը միջինից՝ " + differenceToMidValue[i]);
             S += Math.pow(differenceToMidValue[i], 2);
         }
-        System.out.println("S (Շեղումների քառակուսիների գումար) = " + S);
+        System.out.println("\nS (Շեղումների քառակուսիների գումար) = " + S);
     }
 
     //Կոնկորդացիայի գործակից
@@ -103,12 +103,17 @@ public class DelphiMethod {
         int k = input.nextInt();
         System.out.print("N (փորձագետների թիվ) = ");
         int n = input.nextInt();
-
         DelphiMethod delphi = new DelphiMethod(k, n);
+
         delphi.questions();
         delphi.questToExpert();
+
+        System.out.println();
         delphi.allRates();
+
+        System.out.println();
         delphi.differenceToMiddle();
+
         System.out.println("W (կոնկորդացիայի գործակից) = " + delphi.concordanceConfident());
     }
 }
