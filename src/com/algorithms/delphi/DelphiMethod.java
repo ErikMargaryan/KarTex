@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class DelphiMethod {
 
-    Scanner input = new Scanner(System.in);
+    static Scanner input = new Scanner(System.in);
 
     public int K;
     public int N;
@@ -97,7 +97,7 @@ public class DelphiMethod {
 
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
+//        Scanner input = new Scanner(System.in);
 
         System.out.print("K (դասակարգվող օբյեկտների թիվ) = ");
         int k = input.nextInt();
