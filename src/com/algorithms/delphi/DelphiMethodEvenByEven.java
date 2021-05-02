@@ -4,33 +4,28 @@ import java.util.*;
 
 public class DelphiMethodEvenByEven {
 
+    static Scanner input = new Scanner(System.in);
+
     public int K;
     public int N;
     public int C;
     public int[][] matrix;
-    public int[][] test;
     public String[] questions;
     public float midValue = 0;
     static List<String> listString;
     static List<Integer> listInt;
-    static List<Integer> test1;
     int[] groupRates;
     public float[] differenceToMidValue;
     float S = 0;
-
-
-    static Scanner input = new Scanner(System.in);
 
     public DelphiMethodEvenByEven(int K, int N, int C) {
         this.K = K;
         this.N = N;
         this.C = C;
         this.matrix = new int[C][C];
-        this.test = new int[K][C];//kc
         this.questions = new String[K];
         listString = new ArrayList<>();
         listInt = new ArrayList<>();
-        test1 = new ArrayList<>();
         groupRates = new int[K];
         this.differenceToMidValue = new float[K];
     }
@@ -78,16 +73,6 @@ public class DelphiMethodEvenByEven {
         }
     }
 
-
-    public void delphiMatrix() {
-        for (int i = 0; i < C; i++) {
-            for (int j = 0; j < N; j++) { //N
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
-
     //Էկսպերտի գնահատականները
     public void questToExpert() {
         for (int i = 0; i < N; i++) {
@@ -105,15 +90,6 @@ public class DelphiMethodEvenByEven {
                 }
             }
         }
-        for (int i = 0; i < N; i++) {//N
-            for (int j = 0; j < listInt.size(); j++) {
-                System.out.print(matrix[j][i] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-
-        delphiMatrix();
     }
 
     //Խմբակային գնահատական + Կարգերի միջինացված արժեք
@@ -130,7 +106,7 @@ public class DelphiMethodEvenByEven {
             midValue += groupRates[i];
         }
         midValue /= K;
-        System.out.println("\nԿարգերի միջինացված արժեքը` " + midValue);
+        System.out.println("\nԿարգերի միջինացված արժեքը` " + midValue + "\n");
     }
 
     //Կարգերի շեղում + շեղումների քառակուսիների գումար
@@ -160,12 +136,9 @@ public class DelphiMethodEvenByEven {
         System.out.println(listInt);
         evenByEven.questToExpert();
         System.out.println();
-//        evenByEven.testMatrix();
         evenByEven.allRates();
-        System.out.println(Arrays.toString(evenByEven.groupRates));
         evenByEven.differenceToMiddle();
         evenByEven.concordanceConfident();
-
     }
 
     static int factorial(int n) {
