@@ -1,6 +1,7 @@
 package com.algorithms.delphi;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class DelphiMethodEvenByEven {
 
@@ -35,7 +36,7 @@ public class DelphiMethodEvenByEven {
         questions[0] = "1) Դասախոսի գիտելիքները․ ";
         questions[1] = "2) Աշխատանքային հեռանկար․ ";
         questions[2] = "3) Լսարանային պայմանները․ ";
-//        questions[3] = "4) Մատուցման ձևը․ ";
+        questions[3] = "4) Մատուցման ձևը․ ";
         int r = 2;
         int n = questions.length;
         printCombination(questions, n, r);
@@ -46,18 +47,17 @@ public class DelphiMethodEvenByEven {
                                 int end, int index, int r) {
 
         if (index == r) {
-            for (int j = 0; j < r; j++) {
+            IntStream.range(0, r).forEach(j -> {
                 System.out.print(data[j] + " ");
                 listString.add(data[j]);
-//                listInt.add(j);
-            }
+            });
             System.out.println("");
             return;
         }
-        for (int i = start; i <= end && end - i + 1 >= r - index; i++) {
+        IntStream.iterate(start, i -> i <= end && end - i + 1 >= r - index, i -> i + 1).forEach(i -> {
             data[index] = questions[i];
             combinationUtil(questions, data, i + 1, end, index + 1, r);
-        }
+        });
 
     }
 
@@ -81,12 +81,15 @@ public class DelphiMethodEvenByEven {
                 System.out.print(listString.get(j) + " ");
                 System.out.println(listString.get(j + 1));
                 matrix[j][i] = input.nextInt();
-                if (matrix[j][i] == 1) {
-                    matrix[j + 1][i] = 0;
-                    System.out.println("\t" + 0);
-                } else if (matrix[j][i] == 0) {
-                    matrix[j + 1][i] = 1;
-                    System.out.println("\t" + 1);
+                switch (matrix[j][i]) {
+                    case 1 -> {
+                        matrix[j + 1][i] = 0;
+                        System.out.println("\t" + 0);
+                    }
+                    case 0 -> {
+                        matrix[j + 1][i] = 1;
+                        System.out.println("\t" + 1);
+                    }
                 }
             }
         }
@@ -101,21 +104,21 @@ public class DelphiMethodEvenByEven {
             }
             groupRates[listInt.get(i)] += rates;
         }
-        for (int i = 0; i < K; i++) {
+        IntStream.range(0, K).forEach(i -> {
             System.out.println(i + 1 + "-ին օբյեկտի խմբակային գնահատականը՝ " + groupRates[i]);
             midValue += groupRates[i];
-        }
+        });
         midValue /= K;
         System.out.println("\nԿարգերի միջինացված արժեքը` " + midValue + "\n");
     }
 
     //Կարգերի շեղում + շեղումների քառակուսիների գումար
     public void differenceToMiddle() {
-        for (int i = 0; i < K; i++) {
+        IntStream.range(0, K).forEach(i -> {
             differenceToMidValue[i] = groupRates[i] - midValue;
             System.out.println(i + 1 + "-ին օբյեկտի համար յուրաքանչյուր կարգի շեղումը միջինից՝ " + differenceToMidValue[i]);
             S += Math.pow(differenceToMidValue[i], 2);
-        }
+        });
         System.out.println("\nS (Շեղումների քառակուսիների գումար) = " + S);
     }
 
@@ -131,14 +134,18 @@ public class DelphiMethodEvenByEven {
         System.out.print("N (փորձագետների թիվ) = ");
         int n = input.nextInt();
         int c = 2 * factorial(k) / (factorial(2) * factorial(k - 2));
+
         DelphiMethodEvenByEven evenByEven = new DelphiMethodEvenByEven(k, n, c);
+
         evenByEven.questions();
         System.out.println(listInt);
         evenByEven.questToExpert();
+
         System.out.println();
         evenByEven.allRates();
         evenByEven.differenceToMiddle();
-        evenByEven.concordanceConfident();
+
+        System.out.println("W (կոնկորդացիայի գործակից) = " + evenByEven.concordanceConfident());
     }
 
     static int factorial(int n) {

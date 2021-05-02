@@ -2,6 +2,7 @@ package com.algorithms.delphi;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 /**
  * Delphi's method
@@ -38,7 +39,7 @@ public class DelphiMethod {
         questions[0] = "1) Դասախոսի գիտելիքները․ ";
         questions[1] = "2) Աշխատանքային հեռանկար․ ";
         questions[2] = "3) Լսարանային պայմանները․ ";
-//        questions[3] = "4) Մատուցման ձևը․ ";
+        questions[3] = "4) Մատուցման ձևը․ ";
         System.out.println(Arrays.toString(questions));
     }
 
@@ -81,11 +82,11 @@ public class DelphiMethod {
 
     //Կարգերի շեղում + շեղումների քառակուսիների գումար
     public void differenceToMiddle() {
-        for (int i = 0; i < K; i++) {
+        IntStream.range(0, K).forEach(i -> {
             differenceToMidValue[i] = groupRates[i] - midValue;
             System.out.println(i + 1 + "-ին օբյեկտի համար յուրաքանչյուր կարգի շեղումը միջինից՝ " + differenceToMidValue[i]);
             S += Math.pow(differenceToMidValue[i], 2);
-        }
+        });
         System.out.println("\nS (Շեղումների քառակուսիների գումար) = " + S);
     }
 
@@ -96,8 +97,6 @@ public class DelphiMethod {
 
 
     public static void main(String[] args) {
-
-//        Scanner input = new Scanner(System.in);
 
         System.out.print("K (դասակարգվող օբյեկտների թիվ) = ");
         int k = input.nextInt();
