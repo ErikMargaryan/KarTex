@@ -3,6 +3,14 @@ package com.algorithms.delphi;
 import java.util.*;
 import java.util.stream.IntStream;
 
+/**
+ * Delphi's method
+ *
+ * @author Erik Margaryan
+ * @version 2.4
+ * @since 02.05.2021
+ */
+
 public class DelphiMethodEvenByEven {
 
     static Scanner input = new Scanner(System.in);
