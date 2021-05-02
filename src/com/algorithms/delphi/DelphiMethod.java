@@ -38,7 +38,7 @@ public class DelphiMethod {
         questions[0] = "1) Դասախոսի գիտելիքները․ ";
         questions[1] = "2) Աշխատանքային հեռանկար․ ";
         questions[2] = "3) Լսարանային պայմանները․ ";
-        questions[3] = "4) Մատուցման ձևը․ ";
+//        questions[3] = "4) Մատուցման ձևը․ ";
         System.out.println(Arrays.toString(questions));
     }
 
@@ -61,7 +61,7 @@ public class DelphiMethod {
                 matrix[j][i] = input.nextInt();
             }
         }
-//        delphiMatrix();
+        delphiMatrix();
     }
 
     //Խմբակային գնահատական + Կարգերի միջինացված արժեք
